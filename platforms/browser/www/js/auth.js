@@ -1,7 +1,7 @@
 $(document).ready(function(){
 							 
 							 
-	var url=hosturl+"auth.php?callback=?";
+	var url=hosturl+"auth1.php?callback=?";
     
     //Login Function
     $("#signin").submit(function(){

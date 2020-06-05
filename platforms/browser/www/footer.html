@@ -1,22 +1,49 @@
+<script> 	  
+$(document).ready(function(){
+	
+ 	if (localStorage.ut == "STORE") {
+		$(".store").show();
+		$(".depot").hide();
+	} 
+	if (localStorage.ut == "DEPOT") {
+	$(".depot").show();
+	$(".store").hide();
+	
+	}
+ 
+}); 
+</script>
 <!--- FOOTER START -->
       <footer class="footer section-padding">
         <div class="container text-center">
           <div class="home-screen">
             <div class="home-screen-icons row ">
               <div class="col-20 tablet-20"> <a href="profile.html" class="">
-                <div class="icon-div"> <i class="fa fa-home  grow"></i> </div>
+                <div class="icon-div"> <i class="fa fa-user grow"></i> </div>
                 </a> </div>
-              
-              
-                <div class="col-20 tablet-20"> <a href="loads.html" class="">
+               	<div class="user" id="user">
+                <div class="col-20 tablet-20"> <a href="stock-out.html" class="">
+                <div class="icon-div"> <i class="fa fa-indent grow"></i> </div>
+                </a> </div>
+                <div class="col-20 tablet-20"> <a href="stock-accept.html" class="">
+                <div class="icon-div"> <i class="fa fa-outdent grow"></i> </div>
+                </a> </div>
+                <div class="col-20 tablet-20"> <a href="stock-report.html" class="">
+                <div class="icon-div"> <i class="fa fa-bar-chart grow"></i> </div>
+                </a> </div>
+                </div>
+                
+                <div class="customer">
+                <div class="col-20 tablet-20"> <a href="customer_inventory.html" class="">
                 <div class="icon-div"> <i class="fa fa-tasks grow"></i> </div>
                 </a> </div>
-                <div class="col-20 tablet-20"> <a href="warrants.html" class="">
-                <div class="icon-div"> <i class="fa fa-file grow"></i> </div>
+                <div class="col-20 tablet-20"> <a href="settings.html" class="">
+                <div class="icon-div"> <i class="fa fa-cog grow"></i> </div>
                 </a> </div>
-                <div class="col-20 tablet-20"> <a href="bundles.html" class="">
-                <div class="icon-div"> <i class="fa fa-support grow"></i> </div>
+                <div class="col-20 tablet-20"> <a href="mailto:info@webzin.in" class="">
+                <div class="icon-div"> <i class="fa fa-envelope grow"></i> </div>
                 </a> </div>
+                </div>
               <div class="col-20 tablet-20"> <a href="tel:+919040038535">
                 <div class="icon-div"> <i class=" fa fa-phone grow"></i> </div>
                 </a> </div>

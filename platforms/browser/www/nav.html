@@ -1,14 +1,29 @@
-<script> 	  //logout function
-$(".fa-sign-out").click(function(){
-localStorage.login="false";
-window.location.href = "login.html";
-});
+<script> 	  
+
+$(document).ready(function(){
+	
+	$("#signout").click(function(){
+	localStorage.clear();
+	window.location.href = "login.html";
+	});
  
+	if (localStorage.ut == "STORE") {
+		$(".store").show();
+		$(".depot").hide();
+	} 
+	if (localStorage.ut == "DEPOT") {
+	$(".depot").show();
+	$(".store").hide();
+	
+	}
+ 
+}); 
+	
 </script>
 
 
 <div class="w-container">
-<nav class="bg-gradient nav-menu" role="navigation" id="mySidenav">
+<nav class="bg-gradient nav-menu visible" role="navigation" id="mySidenav">
 <a  class="btn-close-button nav-menu-link w-clearfix w-inline-block" href="#">
 <div class="icon-list-menu">
    <div class="icon ion-android-close" onClick="closeNav()"></div>
@@ -21,55 +36,79 @@ window.location.href = "login.html";
 </div>
 <div class="nav-menu-titles">Home</div>
 </a>
-<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="add-load.html">
+ <!--depot menu -->    
+<div class="depot">               
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="add-stock.html">
 <div class="icon-list-menu">
 <i class="fa fa-tasks"></i> 
 </div>
-<div class="nav-menu-titles">Add Load</div>
+<div class="nav-menu-titles">My Inventory</div>
 </a>
-<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="add-warrant.html">
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="settings.html">
+<div class="icon-list-menu">
+<i class="fa fa-user"></i> 
+</div>
+<div class="nav-menu-titles">My Profile</div>
+</a>
+</div>
+<!--store menu -->
+<div class="store">
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="stock-out.html">
+<div class="icon-list-menu">
+<i class="fa fa-tasks"></i> 
+</div>
+<div class="nav-menu-titles">Stock Out</div>
+</a>
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="stock-accept.html">
 <div class="icon-list-menu">
    <i class="fa fa-file"></i>
 </div>
-<div class="nav-menu-titles">Add Warrant</div>
+<div class="nav-menu-titles">Accept Stock</div>
 </a>
-<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="add-bundle.html">
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="stock-report.html">
+<div class="icon-list-menu">
+<i class="fa fa-paste"></i> 
+</div>
+<div class="nav-menu-titles">Stock Reports</div>
+</a>
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="add-day-cash.html">
 <div class="icon-list-menu">
    <i class="fa fa-support"></i> 
 </div>
-<div class="nav-menu-titles">Add Bundle</div>
+<div class="nav-menu-titles">Add Day Cash</div>
 </a>
-<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="load-report.html">
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="day-cash.html">
 <div class="icon-list-menu">
-   <i class="fa fa-align-justify"></i> 
+   <i class="fa fa-support"></i> 
 </div>
-<div class="nav-menu-titles">Load Reports</div>
-</a>
-<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="warrant-report.html">
-<div class="icon-list-menu">
-   <i class="fa fa-align-center"></i> 
-</div>
-<div class="nav-menu-titles">Warrant Reports</div>
+<div class="nav-menu-titles">Day Cash Reports</div>
 </a>
  
+
+</div>
+ 
+ <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="#" id="signout">
+<div class="icon-list-menu" id="signout">
+<i id="signout" class="fa fa-sign-out"></i>
+</div>
+<div class="nav-menu-titles" id="signout">Sign Out</div>
+</a>
  
 </nav>
 <div class="wrapper-mask" data-ix="menu-mask"></div>
-<a class="navbar-button left w-nav-button" data-load="1" href="#" id="signout"> 
-<div class="navbar-button left w-nav-button" data-ix="hide-navbar-icons" id="signout">
-
-<i id="signout" class="fa fa-sign-out"></i>
-
+<a class="navbar-button left w-nav-button" data-load="1" href="profile.html"> 
+<div class="navbar-button left w-nav-button" data-ix="hide-navbar-icons">
+<img src="images/logo.png" alt="" />
 </div>
 </a>
 
 <script>
 if(filename == 'profile.html'){document.getElementById("demo").innerHTML = "Profile";}
-if(filename == 'add-load.html'){document.getElementById("demo").innerHTML = "Add Load";}
-if(filename == 'add-warrant.html'){document.getElementById("demo").innerHTML = "Add Warrant";}
-if(filename == 'add-bundle.html'){document.getElementById("demo").innerHTML = "Add Bundle";}
-if(filename == 'loads.html'){document.getElementById("demo").innerHTML = "Load Records";}
-if(filename == 'warrants.html'){document.getElementById("demo").innerHTML = "Warrant Records";}
+if(filename == 'stock-out.html'){document.getElementById("demo").innerHTML = "Stock Out";}
+if(filename == 'stock-report.html'){document.getElementById("demo").innerHTML = "Stock Reports";}
+if(filename == 'stock-accept.html'){document.getElementById("demo").innerHTML = "Accept Stocks";}
+if(filename == 'add-day-cash.html'){document.getElementById("demo").innerHTML = "Add Day Cash";}
+if(filename == 'day-cash.html'){document.getElementById("demo").innerHTML = "Day Cash Report";}
 if(filename == 'bundles.html'){document.getElementById("demo").innerHTML = "Bundle Records";}
 if(filename == 'warrant-report.html'){document.getElementById("demo").innerHTML = "Warrant Reports";}
 if(filename == 'load-report.html'){document.getElementById("demo").innerHTML = "Load Reports";}
