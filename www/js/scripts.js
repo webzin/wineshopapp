@@ -1,4 +1,7 @@
-var hosturl="http://127.0.0.1/wineshop/";
+/*var hosturl="http://wordpress-guru.net/pid/";
+*/
+var hosturl="http://192.168.0.6/wineshop/";
+
 /*! Extra inline scripts: atlanta-mobile.original 2016-12-29 */
     document.addEventListener("touchstart", function(){}, true);
     $(function() {
@@ -187,39 +190,31 @@ function closeNav() {
  
 	 
 }
-
-//Login Function
-$("#signin").submit(function(){
-	
-	var email=$("#email").val();
-	var password=$("#password").val();
-	var dataString="email="+email+"&password="+password+"&login=";
-	if($.trim(email).length>0 & $.trim(password).length>0)
-	{
-		$.ajax({
-			type: "POST",
-			url: hosturl+"auth1.php?callback=?",
-			data: dataString,
-			crossDomain: true,
-			cache: false,
-			beforeSend: function(){ $("#login").html('Connecting...');},
-			success: function(data){
-				if(data=="success")
-				{
-					localStorage.login="true";
-					localStorage.email=email;
-					window.location.href = "profile.html";
-				}
-				else if(data="failed")
-				{
-					alert("Login error");
-					$("#login").html('Login');
-				}
-			}
+$(document).ready(function(){
+ 
+		
+		$('#sucessMessage').click(function() {
+		$('#sucessMessage').hide();
 		});
-	}return false;
+	
+	$("#signout").click(function(){
+	localStorage.clear();
+	window.location.href = "login.html";
+	});
+	
+	if (localStorage.ut == "U") {
+		$(".admin").hide();
+	} 
+	if (localStorage.ut == "C") {
+		$(".customer").show();
+		$(".admin").hide();
+		$(".user").hide();
+	
+	} 
+	  
+}); 
+	
 
-});
 
  
 	
