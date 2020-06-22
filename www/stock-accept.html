@@ -2,7 +2,7 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <title>Add Stock</title>
+      <title>Accpet Stocks</title>
       <meta content="width=device-width,initial-scale=1" name="viewport">
       <meta name="generator" content="SensationThemes">
       <link href="css/normalize.css" rel="stylesheet" type="text/css">
@@ -46,7 +46,7 @@ $('#loads').load(hosturl+'mobdata.php?action=ld&ld='+lid, '', function(response,
 
 
 
- $('#add-warrant').validate({ // initialize the plugin
+ $('#stock-accept').validate({ // initialize the plugin
         rules: {
             loads: {
                 required: true,
@@ -61,7 +61,7 @@ $('#loads').load(hosturl+'mobdata.php?action=ld&ld='+lid, '', function(response,
     });
  
  //Add Warrant
-$("#add-warrant").submit(function(){
+$("#stock-accept").submit(function(){
 	
 	var loads=$("#loads").val();
 	var warrantno=$("#warrantno").val();
@@ -111,14 +111,14 @@ $("#add-warrant").submit(function(){
             
                <div class="w-form">
                <div id="sucessMessage"> </div>
-                  <form action="#" data-name="Add Warrant" id="add-warrant" name="add-warrant">
+                  <form action="#" data-name="Add Warrant" id="stock-accept" name="stock-accept">
                      <div class="separator-button-input"></div>
-                     <div>
+                     <div class="w50">
                         <label class="label-form" for="full-name-field">Select a Load:</label><select class="input-form select w-select" id="loads" name="loads"  >
                         </select>
                         <div class="separator-fields"></div>
                      </div>
-                     <div>
+                      <div class="w50">
                         <label class="label-form" for="email-field">Warrant Number:</label><input class="input-form w-input" data-name="warrantno" id="warrantno" maxlength="256" name="warrantno"  type="number" value="">
                         <div class="separator-fields"></div>
                      </div>

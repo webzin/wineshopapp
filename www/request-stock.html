@@ -2,7 +2,7 @@
 <html>
    <head>
         <meta charset="utf-8">
-        <title>Out Stock</title>
+        <title>Request Stock</title>
         <meta content="width=device-width,initial-scale=1" name="viewport">
         <meta name="generator" content="SensationThemes">
         <link href="css/normalize.css" rel="stylesheet" type="text/css">
@@ -39,44 +39,34 @@
     });
 	
 	$(document).ready(function(){
-	$('#brand').load(hosturl+'mobdata.php?action=brand', '', function(response, status, xhr) {
-	});
-	$('#winetype').load(hosturl+'mobdata.php?action=wtype', '', function(response, status, xhr) {
-	});
+	
 	$('#winename').load(hosturl+'mobdata.php?action=wname', '', function(response, status, xhr) {
 	});
 
- $('#addload').validate({ // initialize the plugin
+ $('#requeststock').validate({ // initialize the plugin
         rules: {
-            customername: {
+            winename: {
                 required: true,
             },
-			orderno: {
+			quantity: {
                 required: true,
 				number: true,
-            },
-			veichle: {
-                required: true,
-            },
-            building: {
-                required: true,
-            }
+            } 
 			 },
 		 
        
     });
 
  //Add Warrant
-$("#addload").submit(function(){
+$("#requeststock").submit(function(){
 	
-		var customername=$("#customername").val();
-		var orderno=$("#orderno").val();
-		var veichle=$("#veichle").val();	
-		var building=$("#building").val();
-		var eml = localStorage.email;
+		var winename=$("#winename").val();
+		var quantity=$("#quantity").val();
+		var store_id = localStorage.storeid;
+		var user_id = localStorage.uid;
 		
-		var dataString="customername="+customername+"&orderno="+orderno+"&veichle="+veichle+"&building="+building+"&eml="+eml+"&load=";
-		if($.trim(customername).length>0 & $.trim(orderno).length>0 & $.trim(veichle).length>0 & $.trim(building).length>0)
+		var dataString="winename="+winename+"&quantity="+quantity+"&store_id="+store_id+"&user_id="+user_id+"&stockrequest=";
+		if($.trim(winename).length>0 & $.trim(quantity).length>0 & $.trim(store_id).length>0 & $.trim(user_id).length>0)
 		
 		
                
@@ -87,7 +77,7 @@ $("#addload").submit(function(){
 			data: dataString,
 			crossDomain: true,
 			cache: false,
-			beforeSend: function(){ $("#load").val('Load Adding...');},
+			beforeSend: function(){ $("#stockrequest").val('Requesting Stock...');},
 			success: function(data, status){
 			
 				var resp = $.parseJSON(data);
@@ -95,15 +85,11 @@ $("#addload").submit(function(){
 				$('html, body').animate({ scrollTop: $('#main-stack').offset().top }, 500);
 				$('#sucessMessage').html(resp.value1);
 				$('#sucessMessage').show();
-				$('#sucessMessage').delay(5000).fadeOut();
-				$("#orderno").val(''); 
-				$("#orderno").focus();
-				$("#load").val('Add Load');
+				$('#sucessMessage').delay(2000).fadeOut();
+				$("#stockrequest").val('Request Stock');
 				if(resp.value3=="S"){
-				localStorage.lid=resp.value2;
-				window.location.href = "add-warrant.html";
-				}
-				 
+				 $("#requeststock")[0].reset()
+				 }
 			}
 			
 		});
@@ -129,43 +115,23 @@ $("#addload").submit(function(){
             <div class="body padding">
                <div class="w-form">
                <div id="sucessMessage"> </div>
-                  <form action="#" data-name="Select a Brand" id="stockout" name="stockout">
+                  <form action="#" data-name="Select a Brand" id="requeststock" name="requeststock">
                      <div class="separator-button-input"></div>
-                     <div>
-                        <label class="label-form" for="full-brand-field">Select a Brand:</label><select class="input-form select w-select" name="brand" id="brand"  >
-                        
-                        </select>
-                        <div class="separator-fields"></div>
-                     </div>
-                     <div>
-                        <label class="label-form" for="winetype-field">Select Wine Type:</label>
-						<select class="input-form select w-select"  name="winetype" id="winetype"  > </select>
-						 
-                        <div class="separator-fields"></div>
-                     </div>
-					  <div>
-                        <label class="label-form" for="winename-field">Select Wine Name:</label>
+                     
+					  <div class="w501">
+                        <label class="label-form" for="winename">Select Wine Name:</label>
 						<select class="input-form select w-select"  name="winename" id="winename"  > </select>
 						 
                         <div class="separator-fields"></div>
                      </div>
-                     <div>
-                        <label class="label-form" for="password-ield">Quantity:</label>
-						<input class="input-form w-input" data-name="veichle" id="veichle" maxlength="256" name="veichle"  type="number" value="">
+                     <div class="w501">
+                        <label class="label-form" for="quantity">Quantity:</label>
+						<input class="input-form w-input" data-name="quantity" id="quantity" maxlength="256" name="quantity"  type="number" value="">
                         <div class="separator-fields"></div>
                      </div>
-                      <div>
-                        <label class="label-form" for="email-field">Sale Type:</label>
-						<select class="input-form select w-select"  name="building" id="building"  >
-						<option value="">Select Sale Type</option>
-						<option value="W">Wholesale</option>
-						<option value="R">Retail</option>
-						</select>
-						 
-                        <div class="separator-fields"></div>
-                     </div>
+                    
                      
-                     <input class="action-button w-button" data-wait="Please wait..." type="submit" value="Stock Out" id="load">
+                     <input class="action-button w-button" data-wait="Please wait..." type="submit" value="Request Stock" id="stockrequest">
                         <div class="separator-button"></div>
                   </form>
                </div>
