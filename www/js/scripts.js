@@ -1,6 +1,4 @@
-/*var hosturl="http://wordpress-guru.net/pid/";
-*/
-var hosturl="http://192.168.0.6/wineshop/";
+var hosturl="http://wordpress-guru.net/wine/";
 
 /*! Extra inline scripts: atlanta-mobile.original 2016-12-29 */
     document.addEventListener("touchstart", function(){}, true);
