@@ -2,7 +2,7 @@
 <html>
    <head>
         <meta charset="utf-8">
-        <title>Out Stock</title>
+        <title> Stock</title>
         <meta content="width=device-width,initial-scale=1" name="viewport">
         <meta name="generator" content="SensationThemes">
         <link href="css/normalize.css" rel="stylesheet" type="text/css">
@@ -39,10 +39,9 @@
     });
 	
 	$(document).ready(function(){
-	$('#brand').load(hosturl+'mobdata.php?action=brand', '', function(response, status, xhr) {
+	$('#store').load(hosturl+'mobdata.php?action=store', '', function(response, status, xhr) {
 	});
-	$('#winetype').load(hosturl+'mobdata.php?action=wtype', '', function(response, status, xhr) {
-	});
+	 
 	$('#winename').load(hosturl+'mobdata.php?action=wname', '', function(response, status, xhr) {
 	});
 
@@ -129,20 +128,15 @@ $("#addload").submit(function(){
             <div class="body padding">
                <div class="w-form">
                <div id="sucessMessage"> </div>
-                  <form action="#" data-name="Select a Brand" id="stockout" name="stockout">
+                  <form action="#" data-name="Select a Brand" id="stockin" name="stockin">
                      <div class="separator-button-input"></div>
                      <div>
-                        <label class="label-form" for="full-brand-field">Select a Brand:</label><select class="input-form select w-select" name="brand" id="brand"  >
+                        <label class="label-form" for="full-brand-field">Select a Store:</label><select class="input-form select w-select" name="brand" id="brand"  >
                         
                         </select>
                         <div class="separator-fields"></div>
                      </div>
-                     <div>
-                        <label class="label-form" for="winetype-field">Select Wine Type:</label>
-						<select class="input-form select w-select"  name="winetype" id="winetype"  > </select>
-						 
-                        <div class="separator-fields"></div>
-                     </div>
+                 
 					  <div>
                         <label class="label-form" for="winename-field">Select Wine Name:</label>
 						<select class="input-form select w-select"  name="winename" id="winename"  > </select>
@@ -154,16 +148,7 @@ $("#addload").submit(function(){
 						<input class="input-form w-input" data-name="veichle" id="veichle" maxlength="256" name="veichle"  type="number" value="">
                         <div class="separator-fields"></div>
                      </div>
-                      <div>
-                        <label class="label-form" for="email-field">Sale Type:</label>
-						<select class="input-form select w-select"  name="building" id="building"  >
-						<option value="">Select Sale Type</option>
-						<option value="W">Wholesale</option>
-						<option value="R">Retail</option>
-						</select>
-						 
-                        <div class="separator-fields"></div>
-                     </div>
+                    
                      
                      <input class="action-button w-button" data-wait="Please wait..." type="submit" value="Stock Out" id="load">
                         <div class="separator-button"></div>

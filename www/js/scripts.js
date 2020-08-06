@@ -1,6 +1,6 @@
  
 var hosturl="http://wordpress-guru.net/wine/";
-=======
+ 
  
 
 /*! Extra inline scripts: atlanta-mobile.original 2016-12-29 */
