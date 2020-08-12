@@ -36,19 +36,37 @@ $(document).ready(function(){
 </div>
 <div class="nav-menu-titles">Home</div>
 </a>
- <!--depot menu -->    
+<!--depot menu -->    
 <div class="depot">               
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="add-stock.html">
 <div class="icon-list-menu">
 <i class="fa fa-tasks"></i> 
 </div>
-<div class="nav-menu-titles">My Inventory</div>
+<div class="nav-menu-titles">Add Stock</div>
 </a>
-<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="settings.html">
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manage-depot-stock.html">
+<div class="icon-list-menu">
+<i class="fa fa-tasks"></i> 
+</div>
+<div class="nav-menu-titles">View Stock Entries</div>
+</a>
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="view-stock-request.html">
 <div class="icon-list-menu">
 <i class="fa fa-user"></i> 
 </div>
-<div class="nav-menu-titles">My Profile</div>
+<div class="nav-menu-titles">View Stock Request</div>
+</a>
+<a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="stock-reports-store-depo.html">
+<div class="icon-list-menu">
+<i class="fa fa-user"></i> 
+</div>
+<div class="nav-menu-titles">Stock Reports</div>
+</a>
+    <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="view-bl-lpl-report.html">
+<div class="icon-list-menu">
+<i class="fa fa-user"></i> 
+</div>
+<div class="nav-menu-titles">View BL LPL Report</div>
 </a>
 </div>
 <!--store menu -->
@@ -118,9 +136,11 @@ if(filename == 'stock-accept.html'){document.getElementById("demo").innerHTML = 
 if(filename == 'add-day-cash.html'){document.getElementById("demo").innerHTML = "Add Day Cash";}
 if(filename == 'day-cash.html'){document.getElementById("demo").innerHTML = "Day Cash Report";}
 if(filename == 'request-stock.html'){document.getElementById("demo").innerHTML = "Request Stock";}
-if(filename == 'stock-request-report.html'){document.getElementById("demo").innerHTML = "View Stock Requests";}
+if(filename == 'view-stock-request.html'){document.getElementById("demo").innerHTML = "View Stock Requests";}
 if(filename == 'add-stock.html'){document.getElementById("demo").innerHTML = "Add Stocks";}
-if(filename == 'manage-depot-stock.html'){document.getElementById("demo").innerHTML = "View Stocks";}
+if(filename == 'manage-depot-stock.html'){document.getElementById("demo").innerHTML = "View Stock Entries";}
+if(filename == 'manage-depot-stock.html'){document.getElementById("demo").innerHTML = "View Store Stocks";}
+if(filename == 'view-bl-lpl-report.html'){document.getElementById("demo").innerHTML = "View BL LPL Report";}
 </script>
 <div class="navbar-title" id="demo"></div>
 

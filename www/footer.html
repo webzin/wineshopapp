@@ -4,11 +4,17 @@ $(document).ready(function(){
  	if (localStorage.ut == "STORE") {
 		$(".store").show();
 		$(".depot").hide();
+		$(".mangr").hide()
 	} 
 	if (localStorage.ut == "DEPOT") {
 	$(".depot").show();
 	$(".store").hide();
-	
+	$(".mangr").hide()
+	}
+		if (localStorage.ut == "MANGR") {
+	$(".depot").hide();
+	$(".store").hide();
+	$(".mangr").show()
 	}
  
 }); 
@@ -37,6 +43,21 @@ $(document).ready(function(){
                 </div>
                 
                 <div class="depot">
+                <div class="col-20 tablet-20"> <a href="add-stock.html" class="">
+                <div class="icon-div"> <i class="fa fa-edit grow"></i> </div>
+                </a> </div>
+                <div class="col-20 tablet-20"> <a href="manage-depot-stock.html" class="">
+                <div class="icon-div"> <i class="fa fa-sticky-note-o grow"></i> </div>
+                </a> </div>
+				<div class="col-20 tablet-20"> <a href="view-stock-request.html" class="">
+                <div class="icon-div"> <i class="fa fa-tasks grow"></i> </div>
+                </a> </div>
+				 <div class="col-20 tablet-20"> <a href="#">
+                <div class="icon-div"> <i class=" fa fa-sign-in grow"></i> </div>
+                </a> </div>
+                </div>
+                
+                <div class="mangr">
                 <div class="col-20 tablet-20"> <a href="add-stock.html" class="">
                 <div class="icon-div"> <i class="fa fa-edit grow"></i> </div>
                 </a> </div>

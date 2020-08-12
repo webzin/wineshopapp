@@ -39,7 +39,7 @@
     });
 	
 	$(document).ready(function(){
-	$('#storename').load(hosturl+'mobdata.php?action=store', '', function(response, status, xhr) {
+	$('#itemname').load(hosturl+'mobdata.php?action=wname', '', function(response, status, xhr) {
 	});
 	 
  
@@ -125,26 +125,24 @@ $("#chalanin").submit(function(){
                   <form action="#" data-name="Select a Store" id="chalanin" name="chalanin">
                      <div class="separator-button-input"></div>
                      <div>
-                        <label class="label-form" for="storename">Select a Store:</label><select class="input-form select w-select" name="storename" id="storename"  >
+                        <label class="label-form" for="storename">Select an Item:</label><select class="input-form select w-select" name="itemname" id="itemname"  >
                         
                         </select>
                         <div class="separator-fields"></div>
                      </div>
                  
 					  <div>
-                        <label class="label-form" for="chalanno">Chalan No:</label>
-						 <input class="input-form w-input" data-name="chalanno" id="chalanno" maxlength="256" name="chalanno"  type="number" value="">
+                        <label class="label-form" for="chalanno">Quantity:</label>
+						 <input class="input-form w-input" data-name="qty" id="qty" maxlength="256" name="qty"  type="number" value="">
 						 
                         <div class="separator-fields"></div>
                      </div>
-                     <div>
-                        <label class="label-form" for="chalanfile">Chalan File:</label>
-						<input class="input-form w-input" data-name="chalanfile" id="chalanfile" name="chalanfile"  type="file" value="">
-                        <div class="separator-fields"></div>
-                     </div>
+             
+                
+             
                     
                      
-                     <input class="action-button w-button" data-wait="Please wait..." type="submit" value="Add Chalan" id="addchalan">
+                     <input class="action-button w-button" data-wait="Please wait..." type="submit" value="Add Stock" id="addstock">
                         <div class="separator-button"></div>
                   </form>
                </div>
