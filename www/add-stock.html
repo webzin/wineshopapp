@@ -39,27 +39,23 @@
     });
 	
 	$(document).ready(function(){
-	$('#store').load(hosturl+'mobdata.php?action=store', '', function(response, status, xhr) {
+	$('#storename').load(hosturl+'mobdata.php?action=store', '', function(response, status, xhr) {
 	});
 	 
-	$('#winename').load(hosturl+'mobdata.php?action=wname', '', function(response, status, xhr) {
-	});
+ 
 
  $('#addload').validate({ // initialize the plugin
         rules: {
-            customername: {
+            storeid: {
                 required: true,
             },
-			orderno: {
+			chalanno: {
                 required: true,
 				number: true,
             },
-			veichle: {
+			chalanfile: {
                 required: true,
-            },
-            building: {
-                required: true,
-            }
+            } 
 			 },
 		 
        
@@ -128,24 +124,24 @@ $("#addload").submit(function(){
             <div class="body padding">
                <div class="w-form">
                <div id="sucessMessage"> </div>
-                  <form action="#" data-name="Select a Brand" id="stockin" name="stockin">
+                  <form action="#" data-name="Select a Store" id="stockin" name="stockin">
                      <div class="separator-button-input"></div>
                      <div>
-                        <label class="label-form" for="full-brand-field">Select a Store:</label><select class="input-form select w-select" name="brand" id="brand"  >
+                        <label class="label-form" for="storename">Select a Store:</label><select class="input-form select w-select" name="storename" id="storename"  >
                         
                         </select>
                         <div class="separator-fields"></div>
                      </div>
                  
 					  <div>
-                        <label class="label-form" for="winename-field">Select Wine Name:</label>
-						<select class="input-form select w-select"  name="winename" id="winename"  > </select>
+                        <label class="label-form" for="chalanno">Chalan No:</label>
+						 <input class="input-form w-input" data-name="chalanno" id="chalanno" maxlength="256" name="chalanno"  type="number" value="">
 						 
                         <div class="separator-fields"></div>
                      </div>
                      <div>
-                        <label class="label-form" for="password-ield">Quantity:</label>
-						<input class="input-form w-input" data-name="veichle" id="veichle" maxlength="256" name="veichle"  type="number" value="">
+                        <label class="label-form" for="chalanfile">Chalan File:</label>
+						<input class="input-form w-input" data-name="chalanfile" id="chalanfile" name="chalanfile"  type="file" value="">
                         <div class="separator-fields"></div>
                      </div>
                     
