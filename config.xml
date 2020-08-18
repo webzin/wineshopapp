@@ -7,8 +7,9 @@
     <author email="sales@webzin.in" href="https://www.webzin.in">
         Webzin Team
     </author>
-    <content src="index.html" /> 
-	<splash src="splash.jpg" />
+<content src="index.html" /> 
+<splash src="splash.jpg" />
+
 
 <!-- all platforms -->
 <preference name="phonegap-version" value="cli-9.0.0" />
@@ -34,9 +35,11 @@
 <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2" />
 <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
 <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+<plugin name="cordova-plugin-splashscreen" source="npm" />
 
 
 <preference name="permissions"                value="none"/>
+
 <!-- Customize your app and platform with the preference element. -->
 <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
 <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
@@ -51,7 +54,7 @@
 <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
 <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
 <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-<preference name="SplashScreenDelay" value="5000" />
+ 
 
 <access origin="*" />
 <allow-intent href="http://*/*" />
@@ -77,6 +80,7 @@ Otherwise, you can specify specific domains:
 -->
 <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
 <access origin="https://wine.wordpress-guru.net/" />
+
 <access origin="https://wordpress-guru.net/" subdomains="true" />
 <access origin="https://twitter.com" subdomains="true" />
 <access origin="https://facebook.com" subdomains="true" />
@@ -110,6 +114,20 @@ Otherwise, you can specify specific domains:
 <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png"/>
 <splash density="port-xxhdpi" src="res/screen/android/splash-port-xxhdpi.png"/>
 <splash density="port-xxxhdpi" src="res/screen/android/splash-port-xxxhdpi.png"/>
+<!--  Landscape  -->
+<!-- 
+<splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png"/>
+<splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png"/>
+<splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png"/>
+<splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png"/>
+<splash density="land-xxhdpi" src="res/screen/android/splash-land-xxhdpi.png"/>
+<splash density="land-xxxhdpi" src="res/screen/android/splash-land-xxxhdpi.png"/>
+-->
+
+
+
+
+<allow-intent href="market:*" />
 </platform>
 <platform name="ios">
 <icon src="res/icon/ios/icon-1024.png" width="1024" height="1024"/>
@@ -139,7 +157,29 @@ Otherwise, you can specify specific domains:
 <splash src="res/screen/ios/Default@3x~iphone~comany.png"/>
 <splash src="res/screen/ios/Default@2x~ipad~anyany.png"/>
 <splash src="res/screen/ios/Default@2x~ipad~comany.png"/>
- 
+<!--  Storyboard landscape  -->
+<!-- 
+<splash src="res/screen/ios/Default@2x~iphone~comcom.png"/>
+<splash src="res/screen/ios/Default@3x~iphone~anycom.png"/>
+-->
+<!--  Legacy portrait  -->
+<!-- 
+<splash src="res/screen/ios/Default~iphone.png" width="320" height="480"/>
+<splash src="res/screen/ios/Default@2x~iphone.png" width="640" height="960"/>
+<splash src="res/screen/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
+<splash src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+<splash src="res/screen/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
+<splash src="res/screen/ios/Default-667h.png" width="750" height="1334"/>
+<splash src="res/screen/ios/Default-736h.png" width="1242" height="2208"/>
+-->
+<!--  Legacy landscape  -->
+<!-- 
+<splash src="res/screen/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
+<splash src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+-->
+
+
+
 
 
 <allow-intent href="itms:*" />
