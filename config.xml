@@ -7,6 +7,7 @@
     <author email="sales@webzin.in" href="https://www.webzin.in">
         Webzin Team
     </author>
+	<icon src="icon.png" />
 <content src="index.html" /> 
 <splash src="splash.jpg" />
 
