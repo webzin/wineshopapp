@@ -1,5 +1,5 @@
  
-var hosturl="http://wine.wordpress-guru.net/";
+var hosturl="https://wine.wordpress-guru.net/";
  
  
 
