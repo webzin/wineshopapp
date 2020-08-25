@@ -87,7 +87,11 @@ a {
   background-color: #1775ff;
   color: #fff;
 }
+#filter {padding-top:60px;
+padding-left:5%;
+padding-right:5%;
 
+}
 .navbar.transparent {
   background-color: transparent;
 }
@@ -193,7 +197,8 @@ a {
   text-align: center;
   text-transform: uppercase;
 }
-
+.pullleft {float:left !important;}
+.pullright {float:right !important;}
 .body {
   padding-top: 53px;
     margin-bottom:50px;
@@ -2435,7 +2440,6 @@ table td {
 
 table th {
   font-size: .85em;
-  letter-spacing: .1em;
   text-transform: uppercase;
 }
 /*

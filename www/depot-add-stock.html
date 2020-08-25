@@ -29,8 +29,7 @@
     } else if (localStorage.login == "false" && filename != 'login.html') {
         window.location.href = "login.html";
     }
-    </script>
- <script> 
+  
     $(function(){
       $("#navbarin").load("nav.html"); 
     });
@@ -44,9 +43,9 @@
 	 
  
 
- $('#achalanin').validate({ // initialize the plugin
+ $('#chalanin').validate({ // initialize the plugin
         rules: {
-            storeid: {
+            storename: {
                 required: true,
             },
 			chalanno: {
@@ -59,57 +58,41 @@
 			 },
 		 
        
-    });
+ 
 
- //Add Warrant
-$("#chalanin").submit(function(){
-	
-		var customername=$("#customername").val();
-		var storeid=$("#storeid").val();
-		var chalanno=$("#chalanno").val();	
-		var chalanfile=$("#chalanfile").val();
-		var eml = localStorage.email;
-		
-		var dataString="customername="+customername+"&storeid="+storeid+"&chalanno="+chalanno+"&chalanfile="+chalanfile+"&eml="+eml+"&chalanin=";
-		if($.trim(customername).length>0 & $.trim(storeid).length>0 & $.trim(chalanno).length>0 & $.trim(chalanfile).length>0)
-		
-		
-               
-	{
-		$.ajax({
-			type: "POST",
-			url: hosturl+"auth1.php?callback=?",
-			data: dataString,
-			crossDomain: true,
-			cache: false,
-			beforeSend: function(){ $("#load").val('Adding Chalan Details...');},
-			success: function(data, status){
+    submitHandler: function(form) {
+ 
+			var fd = new FormData(form);
+			localStorage.chalanid= $('#chalanno').val();
+			var depoid = localStorage.getItem('uid')
+			var files = $('#chalanfile')[0].files[0];
+			fd.append('chalanfile',files);
+			fd.append('depo_id',depoid);
 			
+        $.ajax({
+			url: hosturl+"auth1.php",
+			type: "POST",
+			data: fd,
+			contentType: false,
+			processData: false,
+			//data: $('#additem').serialize(),
+            success: function(data, status) {
 				var resp = $.parseJSON(data);
-			 
 				$('html, body').animate({ scrollTop: $('#main-stack').offset().top }, 500);
 				$('#sucessMessage').html(resp.value1);
 				$('#sucessMessage').show();
-				$('#sucessMessage').delay(5000).fadeOut();
-				$("#load").val('Add Chalan');
-				if(resp.value3=="S"){
-				localStorage.lid=resp.value2;
-				window.location.href = "add-items.html";
+				
+				if(resp.value2=="S"){
+				//window.location.href = "depot-add-stock-in.html";
 				}
-				 
-			}
-			
-		});
-	}return false;
+				 }            
+        });
+    }
 
 });
 
-
-
 });
-
-
-    </script>  
+     </script>  
     
    </head>
    <body>
@@ -122,31 +105,32 @@ $("#chalanin").submit(function(){
             <div class="body padding">
                <div class="w-form">
                <div id="sucessMessage"> </div>
-                  <form action="#" data-name="Select a Store" id="chalanin" name="chalanin">
-                     <div class="separator-button-input"></div>
-                     <div>
-                        <label class="label-form" for="storename">Select a Store:</label><select class="input-form select w-select" name="storename" id="storename"  >
-                        
-                        </select>
-                        <div class="separator-fields"></div>
-                     </div>
-                 
-					  <div>
-                        <label class="label-form" for="chalanno">Chalan No:</label>
-						 <input class="input-form w-input" data-name="chalanno" id="chalanno" maxlength="256" name="chalanno"  type="number" value="">
-						 
-                        <div class="separator-fields"></div>
-                     </div>
-                     <div>
-                        <label class="label-form" for="chalanfile">Chalan File:</label>
-						<input class="input-form w-input" data-name="chalanfile" id="chalanfile" name="chalanfile"  type="file" value="">
-                        <div class="separator-fields"></div>
-                     </div>
-                    
-                     
-                     <input class="action-button w-button" data-wait="Please wait..." type="submit" value="Add Chalan" id="addchalan">
-                        <div class="separator-button"></div>
-                  </form>
+                <form action="#" data-name="Select a Store" id="chalanin" name="chalanin">
+                <div class="separator-button-input"></div>
+                <div>
+                <label class="label-form" for="storename">Select a Store:</label>
+                <select class="input-form select w-select" name="storename" id="storename"  >
+                
+                </select>
+                <div class="separator-fields"></div>
+                </div>
+                
+                <div>
+                <label class="label-form" for="chalanno">Chalan No:</label>
+                <input class="input-form w-input" data-name="chalanno" id="chalanno" maxlength="256" name="chalanno"  type="number" value="">
+                
+                <div class="separator-fields"></div>
+                </div>
+                <div>
+                <label class="label-form" for="chalanfile">Chalan File:</label>
+                <input class="input-form w-input" data-name="chalanfile" id="chalanfile" name="chalanfile"  type="file" value="">
+                <div class="separator-fields"></div>
+                </div>
+                
+                
+                <input class="action-button w-button" data-wait="Please wait..." type="submit" value="Add Chalan" name="addchalan" id="addchalan">
+                <div class="separator-button"></div>
+                </form>
                </div>
                 
             </div>

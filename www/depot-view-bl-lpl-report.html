@@ -41,11 +41,12 @@
 	$(function(){
 	var store_id = localStorage.storeid;
 	$("#loaddata").load(hosturl+"mobdata.php?action=bllplrptview"); 
+	$('#storename').load(hosturl+'mobdata.php?action=store');
 	}); 
 	$(window).load(function() {
 	setInterval(function() {
 	$("#loader").fadeOut("slow")
-	}, 3000);
+	}, 500);
 	});
 	
     </script> 
@@ -58,8 +59,13 @@
          <div class="navbar w-nav" data-animation="default" data-collapse="all" data-duration="700" id="navbarin">
          
          </div>
-          
-            <div class="body" id="loaddata">
+          <div id="filter">
+   <label class="label-form" for="storename">Filter By Store:</label>
+          <select class="input-form select w-select" name="storename" id="storename"  > </select>
+             <label class="label-form" for="storename">Filter By year:</label>
+          <select class="input-form select w-select" name="storename" id="storename"  > </select>
+         </div>
+            <div id="loaddata">
             
             
                         </div>

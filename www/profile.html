@@ -38,19 +38,36 @@
 	
 	$("#navbarin").load("nav.html"); 
 	$("#footer").load("footer.html"); 
+	
+	/*data fetch store*/
+	if (localStorage.ut == "STORE") {
 	$("#sot").load(hosturl+"mobdata.php?action=sot"); 
 	$("#totstk").load(hosturl+"mobdata.php?action=totstk"); 
 	$("#sit").load(hosturl+"mobdata.php?action=sit");
 	$("#myinv").load(hosturl+"mobdata.php?action=myinv");
+	}
+	/*data fetch depot*/
+	if (localStorage.ut == "DEPOT") {
+	$("#stkrqdep").load(hosturl+"mobdata.php?action=stkrqdep");
+	$("#stksentdep").load(hosturl+"mobdata.php?action=stksentdep");
+	$("#totstkdep").load(hosturl+"mobdata.php?action=totstkdep");
+	}
+	
+	
+	
+	if (localStorage.storeid != "" && localStorage.storeid != "0") {
 	$("#comp").load(hosturl+"mobdata.php?action=comp&sid="+localStorage.storeid);
+	}
+	
 	
 	//Displaying user email on home page
+ 
+	$("#stid").html(localStorage.storeid);
 	$("#name").html(localStorage.name); 
 	$("#mobile").html(localStorage.mobile); 
 	$("#email").html(localStorage.email);
 	$("#stype").html(localStorage.ut);
-	$("#stid").html(localStorage.storeid);
-	var imageHash=hosturl+"user_profile_pic/"+(localStorage.profile_pic);
+ 	var imageHash=hosturl+"user_profile_pic/"+(localStorage.profile_pic);
 	$("#profilepic").attr('src',imageHash);
 	});
 	
@@ -70,7 +87,7 @@
                   <div class="profile-header">
                      <div class="profile-avatar"><img src="" id="profilepic" style="padding:5px;border:1px solid #ADABAB;border-radius:50px;height:75px;width:75px;" /> </div>
                      <div class="profile-avatar-name-container">
-                        <div class="profile-avatar-name" id=""><span id="comp"></span>&nbsp; <span id="stype"></span>&nbsp;(ID: <span id="stid"></span>)</div>
+                        <div class="profile-avatar-name" id=""><span id="comp" style="text-transform:uppercase;"></span>&nbsp; <span id="stype"></span>&nbsp;<script> if (localStorage.storeid != "" &&localStorage.storeid != "0") {document.write("(ID: <span id='stid'></span>)"); }</script></div>
 						<div class="profile-avatar-name" id="name"></div>
                         <div class="profile-avatar-name" id="mobile"></div>
                         <div class="profile-avatar-job" id="email"></div>
@@ -110,30 +127,30 @@
                   <div class="depot">
                   <div class="profile-figures">
                      <div class="w-row">
-                      
+                      <a class="w-block" data-load="1" href="depot-view-stock-request.html">
                         <div class="w-col w-col-4 w-col-small-4 w-col-tiny-4">
                            <div class="profile-figures-column-group">
-                              <div class="profile-figures-number">55</div>
-                              <div class="profile-figures-title">Stock Requests (Today)</div>
+                              <div class="profile-figures-number" id="stkrqdep">55</div>
+                              <div class="profile-figures-title">Stock<br>Requests<br>(Today)</div>
                            </div>
                         </div>
-                       
-                        <a class="w-block" data-load="1" href="customer_inventory.html">
+                       </a>
+                        <a class="w-block" data-load="1" href="depot-manage-stock.html">
                         <div class="w-col w-col-4 w-col-small-4 w-col-tiny-4">
                            <div class="profile-figures-column-group">
-                              <div class="profile-figures-number">50</div>
-                              <div class="profile-figures-title">Stock Sentout (Today)</div>
+                              <div class="profile-figures-number" id="stksentdep">50</div>
+                              <div class="profile-figures-title">Stock<br>Sentout<br>(Today)</div>
                            </div>
                         </div>
                         </a>
-                         
+                         <a class="w-block" data-load="1" href="depot-view-store-stock.html">
                         <div class="w-col w-col-4 w-col-small-4 w-col-tiny-4">
                            <div class="profile-figures-column-group">
-                              <div class="profile-figures-number">000</div>
-                              <div class="profile-figures-title">Third Depot menu</div>
+                              <div class="profile-figures-number" id="totstkdep"></div>
+                              <div class="profile-figures-title">Total <br>Stock <br>(Today)</div>
                            </div>
                         </div>
-                        
+                        </a>
                         
                         
                      </div>
@@ -146,7 +163,7 @@
                         <div class="w-col w-col-4 w-col-small-4 w-col-tiny-4">
                            <div class="profile-figures-column-group">
                               <div class="profile-figures-number">55</div>
-                              <div class="profile-figures-title">Stock Requests (Today)</div>
+                              <div class="profile-figures-title">Cash Received (Today)</div>
                            </div>
                         </div>
                        
@@ -154,7 +171,7 @@
                         <div class="w-col w-col-4 w-col-small-4 w-col-tiny-4">
                            <div class="profile-figures-column-group">
                               <div class="profile-figures-number">50</div>
-                              <div class="profile-figures-title">Stock Sentout (Today)</div>
+                              <div class="profile-figures-title">Cash <br>Deposit (Today)</div>
                            </div>
                         </div>
                         </a>
@@ -162,7 +179,7 @@
                         <div class="w-col w-col-4 w-col-small-4 w-col-tiny-4">
                            <div class="profile-figures-column-group">
                               <div class="profile-figures-number">000</div>
-                              <div class="profile-figures-title">Third Depot menu</div>
+                              <div class="profile-figures-title">Cash <br>In Hand (Today)</div>
                            </div>
                         </div>
                         
@@ -319,26 +336,26 @@
 	
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="auditor-store-stock-report.html">
 <div class="icon-list-menu">
-<i class="fa fa-tasks"></i> 
+<i class="fa fa-database"></i> 
 </div>
 <div class="nav-menu-titles">Storewise Stock Report</div>
 </a>
 	
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="auditor-stock-report-issue.html">
 <div class="icon-list-menu">
-<i class="fa fa-paste"></i> 
+<i class="fa fa-pencil"></i> 
 </div>
 <div class="nav-menu-titles">Report a stock issue</div>
 </a>
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="auditor-cash-report-issue.html">
 <div class="icon-list-menu">
-<i class="fa fa-paste"></i> 
+<i class="fa fa-pencil-square-o"></i> 
 </div>
 <div class="nav-menu-titles">Report a Cash issue</div>
 </a>
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="auditor-sale-report-issue.html">
 <div class="icon-list-menu">
-   <i class="fa fa-support"></i> 
+   <i class="fa fa-eyedropper"></i> 
 </div>
 <div class="nav-menu-titles">Report a Sales issue</div>
 </a>
@@ -350,56 +367,56 @@
 
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-add-cash-expendeture.html">
 <div class="icon-list-menu">
-<i class="fa fa-tasks"></i> 
+<i class="fa fa-edit"></i> 
 </div>
 <div class="nav-menu-titles">Add cash Expendeture</div>
 </a>
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-cash-accept.html">
 <div class="icon-list-menu">
-   <i class="fa fa-file"></i>
+   <i class="fa fa-handshake-o"></i>
 </div>
 <div class="nav-menu-titles">Accept Cash</div>
 </a>
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-cash-received.html">
 <div class="icon-list-menu">
-<i class="fa fa-tasks"></i> 
+<i class="fa fa-file-zip-o"></i> 
 </div>
 <div class="nav-menu-titles">View Cash Received</div>
 </a>
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-day-cash-report.html">
 <div class="icon-list-menu">
-   <i class="fa fa-support"></i> 
+   <i class="fa fa-calendar-check-o"></i> 
 </div>
 <div class="nav-menu-titles">Day Cash Reports</div>
 </a>
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-add-bank-deposit.html">
 <div class="icon-list-menu">
-<i class="fa fa-tasks"></i> 
+<i class="fa fa-pencil"></i> 
 </div>
 <div class="nav-menu-titles">Add Bank Deposit</div>
 </a>
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-view-bank-deposit.html">
 <div class="icon-list-menu">
-<i class="fa fa-tasks"></i> 
+<i class="fa fa-eye"></i> 
 </div>
 <div class="nav-menu-titles">View Bank Deposit</div>
 </a>
 
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-cashin-bank-report.html">
 <div class="icon-list-menu">
-<i class="fa fa-paste"></i> 
+<i class="fa fa-bank"></i> 
 </div>
 <div class="nav-menu-titles">Cash in Bank Reports</div>
 </a>
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-add-osbc-chalan.html">
 <div class="icon-list-menu">
-<i class="fa fa-paste"></i> 
+<i class="fa fa-eyedropper"></i> 
 </div>
 <div class="nav-menu-titles">Add OSBC Chalan</div>
 </a>
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-view-osbc-chalan.html">
 <div class="icon-list-menu">
-<i class="fa fa-paste"></i> 
+<i class="fa fa-file-word-o grow"></i> 
 </div>
 <div class="nav-menu-titles">View OSBC Chalan</div>
 </a>
@@ -407,7 +424,7 @@
 
 <a class="nav-menu-link w-clearfix w-inline-block" data-load="1" href="manger-cashin-hand-report.html">
 <div class="icon-list-menu">
-   <i class="fa fa-support"></i> 
+   <i class="fa fa-inr"></i> 
 </div>
 <div class="nav-menu-titles">Cash In Hand Reports</div>
 </a>
