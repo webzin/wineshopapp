@@ -9,6 +9,7 @@
             <link href="css/normalize.css" rel="stylesheet" type="text/css">
             <link href="css/webflow.css" rel="stylesheet" type="text/css">
             <link href="css/styles.css" rel="stylesheet" type="text/css">
+            <link href="css/stocktransferpopup.css" rel="stylesheet" type="text/css">
             <link href="images/logo32.png" rel="shortcut icon" type="image/x-icon">
             <link href="images/logo.png" rel="apple-touch-icon">
             <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -41,7 +42,10 @@
 	$(function(){
 	var store_id = localStorage.storeid;
 	$("#loaddata").load(hosturl+"mobdata.php?action=depostrstockview"); 
-	$('#storename').load(hosturl+'mobdata.php?action=store');
+	$('#store_id').load(hosturl+'mobdata.php?action=store');
+	$('#brand').load(hosturl+'mobdata.php?action=br');
+	$('#itmtype').load(hosturl+'mobdata.php?action=wtype');
+	
 	}); 
 		 
 	$(window).load(function() {
@@ -50,6 +54,63 @@
 	}, 1000);
 	});
 	
+	
+		$(document).on('change', '#store_id', function(){
+			var st_id = $('#store_id').val();
+			var itm_nm = $( "#brand option:selected" ).val();
+			var itm_tp = $( "#itmtype option:selected" ).val();
+			var brands = '';
+			var itemtypes = '';
+			//alert(itm_nm)
+			if($( "#brand option:selected" ).val() != '')
+			{
+				brands = '&item_nm='+itm_nm;
+				//$('#loaddata').load(hosturl+'mobdata.php?action=depostrstockview&store_id='+st_id);
+			}
+			if($( "#itmtype option:selected" ).val() != '')
+			{
+				itemtypes = '&item_type='+itm_tp;
+				//$('#loaddata').load(hosturl+'mobdata.php?action=depostrstockview&store_id='+st_id);
+			}
+
+			$('#loaddata').load(hosturl+'mobdata.php?action=depostrstockview&store_id='+st_id+brands+itemtypes);
+		});	
+		
+		$(document).on('change', '#brand', function(){
+			var st_id = $('#store_id').val();
+			var itm_nm = $( "#brand option:selected" ).val();
+			var itm_tp = $( "#itmtype option:selected" ).val();
+			var storid = '';
+			var itemtypes = '';
+			if(st_id != '')
+			{
+				storid = '&store_id='+st_id;
+			}
+			//alert(storid);
+			if($( "#itmtype option:selected" ).val() != '')
+			{
+				itemtypes = '&item_type='+itm_tp;
+				//$('#loaddata').load(hosturl+'mobdata.php?action=depostrstockview&store_id='+st_id);
+			}
+
+			$('#loaddata').load(hosturl+'mobdata.php?action=depostrstockview&item_nm='+itm_nm+storid+itemtypes);
+		});	
+	
+		$(document).on('change', '#itmtype', function(){
+			var st_id = $('#store_id').val();
+			var itm_nm = $( "#brand option:selected" ).text();
+			var itm_type = $( "#itmtype option:selected" ).text();
+			var nm_type = itm_nm+''+itm_type;
+			alert(nm_type);
+			
+			
+		});	
+	
+	function myFunction(id) {
+  
+  var popup = document.getElementById("myPopup"+id);
+  popup.classList.toggle("show");
+}
     </script> 
 
    </head>
@@ -63,21 +124,18 @@
           <div class="body padding">
           <div class="w-form">
           <div class="w50">
-          <label class="label-form" for="storename">Filter By Store:</label>
-          <select class="input-form select w-select" name="storename" id="storename"  > </select>
+          <label class="label-form" for="store_id">Filter By Store:</label>
+          <select class="input-form select w-select" name="store_id" id="store_id"  > </select>
           </div>
           <div class="w50">
-          <label class="label-form" for="storename">Filter By Brand:</label>
+          <label class="label-form" for="brand">Filter By Brand:</label>
           <select class="input-form select w-select" name="brand" id="brand"  > </select>
           </div>
            <div class="w50">
-          <label class="label-form" for="storename">Filter By Type:</label>
-          <select class="input-form select w-select" name="storename" id="storename"  > </select>
+          <label class="label-form" for="itmtype">Filter By Type:</label>
+          <select class="input-form select w-select" name="itmtype" id="itmtype"  > </select>
           </div>
-          <div class="w50">
-          <label class="label-form" for="storename">Filter By Variant:</label>
-          <select class="input-form select w-select" name="brand" id="brand"  > </select>
-          </div>
+          
           </div>
           </div>
             <div class="body" id="loaddata">

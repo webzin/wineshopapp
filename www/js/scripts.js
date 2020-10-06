@@ -1,6 +1,6 @@
  
-var hosturl="https://wine.wordpress-guru.net/";
-//var hosturl="http://192.168.29.243/wineshop/"; 
+//var hosturl="https://wine.wordpress-guru.net/";
+var hosturl="http://127.0.0.1/wineshop/"; 
  
 
 /*! Extra inline scripts: atlanta-mobile.original 2016-12-29 */

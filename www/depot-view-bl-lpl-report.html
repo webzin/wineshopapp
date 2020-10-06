@@ -41,7 +41,8 @@
 	$(function(){
 	var store_id = localStorage.storeid;
 	$("#loaddata").load(hosturl+"mobdata.php?action=bllplrptview"); 
-	$('#storename').load(hosturl+'mobdata.php?action=store');
+	$('#store_id').load(hosturl+'mobdata.php?action=store');
+	$('#year').load(hosturl+'mobdata.php?action=bllplyear');
 	}); 
 	$(window).load(function() {
 	setInterval(function() {
@@ -49,6 +50,33 @@
 	}, 500);
 	});
 	
+	
+		$(document).on('change', '#store_id', function(){
+			var st_id = $('#store_id').val();
+			var yr = $('#year').val();
+			
+			if(yr != '')
+			{
+				$('#loaddata').load(hosturl+'mobdata.php?action=bllplrptview&store_id='+st_id+'&selyear='+yr);
+			}
+			else
+			{
+				$('#loaddata').load(hosturl+'mobdata.php?action=bllplrptview&store_id='+st_id);
+			}
+			
+		});
+		$(document).on('change', '#year', function(){
+			var st_id = $('#store_id').val();
+			var yr = $('#year').val();
+			if(st_id != '')
+			{
+				$('#loaddata').load(hosturl+'mobdata.php?action=bllplrptview&store_id='+st_id+'&selyear='+yr);
+			}
+			else
+			{
+				$('#loaddata').load(hosturl+'mobdata.php?action=bllplrptview&selyear='+yr);
+			}
+		});
     </script> 
 
    </head>
@@ -60,10 +88,10 @@
          
          </div>
           <div id="filter">
-   <label class="label-form" for="storename">Filter By Store:</label>
-          <select class="input-form select w-select" name="storename" id="storename"  > </select>
+   <label class="label-form" for="store_id">Filter By Store:</label>
+          <select class="input-form select w-select" name="store_id" id="store_id"  > </select>
              <label class="label-form" for="storename">Filter By year:</label>
-          <select class="input-form select w-select" name="storename" id="storename"  > </select>
+          <select class="input-form select w-select" name="year" id="year"  > </select>
          </div>
             <div id="loaddata">
             

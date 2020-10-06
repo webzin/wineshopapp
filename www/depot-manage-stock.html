@@ -9,6 +9,7 @@
             <link href="css/normalize.css" rel="stylesheet" type="text/css">
             <link href="css/webflow.css" rel="stylesheet" type="text/css">
             <link href="css/styles.css" rel="stylesheet" type="text/css">
+            <link href="css/stocktransferpopup.css" rel="stylesheet" type="text/css">
             <link href="images/logo32.png" rel="shortcut icon" type="image/x-icon">
             <link href="images/logo.png" rel="apple-touch-icon">
             <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -39,14 +40,18 @@
 	}); 
 	
 	$(function(){
-	$("#loaddata").load(hosturl+"mobdata.php?action=storestockreport"); 
+	$("#loaddata").load(hosturl+"mobdata.php?action=storestockreport&depo_id="+localStorage.uid); 
 	}); 
 	$(window).load(function() {
 	setInterval(function() {
 	$("#loader").fadeOut("slow")
 	}, 3000);
 	});
-	
+	function myFunction(id) {
+  
+  var popup = document.getElementById("myPopup"+id);
+  popup.classList.toggle("show");
+}
     </script> 
 
    </head>

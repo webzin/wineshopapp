@@ -1,25 +1,25 @@
 <script> 	  
 $(document).ready(function(){
 	
- 	if (localStorage.ut == "STORE") {
+ 	if (localStorage.ut == "storemanager") {
 	$(".storeftr").show();
 	$(".depotftr").hide();
 	$(".mangrftr").hide();
 	$(".audtrftr").hide();
 	} 
-	if (localStorage.ut == "DEPOT") {
+	if (localStorage.ut == "depomanager") {
 	$(".depotftr").show();
 	$(".storeftr").hide();
 	$(".mangrftr").hide();
 	$(".audtrftr").hide();
 	}
-	if (localStorage.ut == "MANGR") {
+	if (localStorage.ut == "manager") {
 	$(".depotftr").hide();
 	$(".storeftr").hide();
 	$(".mangrftr").show();
 	$(".audtrftr").hide();
 	}
-	if (localStorage.ut == "AUDTR") {
+	if (localStorage.ut == "auditor") {
 	$(".depotftr").hide();
 	$(".storeftr").hide();
 	$(".mangrftr").hide();

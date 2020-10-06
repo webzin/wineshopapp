@@ -7,26 +7,26 @@ $(document).ready(function(){
 	window.location.href = "login.html";
 	});
  
-	if (localStorage.ut == "STORE") {
+	if (localStorage.ut == "storemanager") {
 		$(".store").show();
 		$(".depot").hide();
 		$(".audtr").hide();
 		$(".mangr").hide();
 	} 
-	if (localStorage.ut == "DEPOT") {
+	if (localStorage.ut == "depomanager") {
 	$(".depot").show();
 	$(".store").hide();
 	$(".audtr").hide();
 	$(".mangr").hide();
 	
 	}
-	if (localStorage.ut == "MANGR") {
+	if (localStorage.ut == "manager") {
 		$(".store").hide();
 		$(".depot").hide();
 		$(".audtr").hide();
 		$(".mangr").show();
 	} 
-	if (localStorage.ut == "AUDTR") {
+	if (localStorage.ut == "auditor") {
 	$(".depot").hide();
 	$(".store").hide();
 	$(".mangr").hide();

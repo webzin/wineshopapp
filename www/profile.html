@@ -40,14 +40,14 @@
 	$("#footer").load("footer.html"); 
 	
 	/*data fetch store*/
-	if (localStorage.ut == "STORE") {
+	if (localStorage.ut == "storemanager") {
 	$("#sot").load(hosturl+"mobdata.php?action=sot"); 
 	$("#totstk").load(hosturl+"mobdata.php?action=totstk"); 
 	$("#sit").load(hosturl+"mobdata.php?action=sit");
 	$("#myinv").load(hosturl+"mobdata.php?action=myinv");
 	}
 	/*data fetch depot*/
-	if (localStorage.ut == "DEPOT") {
+	if (localStorage.ut == "depomanager") {
 	$("#stkrqdep").load(hosturl+"mobdata.php?action=stkrqdep");
 	$("#stksentdep").load(hosturl+"mobdata.php?action=stksentdep");
 	$("#totstkdep").load(hosturl+"mobdata.php?action=totstkdep");
